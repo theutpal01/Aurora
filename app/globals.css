@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 .dark {
-	--primary: #ff65e3;
-	--secondary: #65eeff;
-	--accent: #b065ff;
-	--background: #121225;
-	--foreground: #1e1e35;
-	--text-primary: #f2f2ff;
-	--text-secondary: #aaacd1;
-
+	--primary: #ff4fcf; /* Slightly deeper neon pink */
+	--secondary: #4fcffa; /* More refined cyan */
+	--accent: #a14fff; /* Balanced purple tone */
+	--background: #0e0e20; /* Darker for true contrast */
+	--foreground: #18182e; /* Slightly darker for depth */
+	--text-primary: #f8f8ff; /* Softer white for readability */
+	--text-secondary: #b5b7e3; /* More vibrant for better contrast */
 }
 
 .light {

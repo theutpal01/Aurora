@@ -2,7 +2,7 @@
   <img src="public/logo.svg" alt="Aurora Logo" width="150" height="150">
 </p>
 
-<h1 align="center">🌌 Aurora - The Social Media Experience</h1>
+<h1 align="center">Aurora - The Social Media Experience</h1>
 
 <p align="center">
   <b>Aurora is a modern social media platform built with Next.js, offering a seamless user experience using dummy data.</b>

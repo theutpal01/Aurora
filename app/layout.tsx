@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="relative light">
+			<body className="relative light bg-background">
 				<Header />
 				<Navbar theme="primary" />
 				{children}
