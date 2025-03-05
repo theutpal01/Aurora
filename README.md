@@ -1,4 +1,7 @@
-# Aurora
+<p align="center">
+  <img src="public/logo.svg" alt="Aurora Logo" width="150" height="150">
+  <h1 style="{font-size: 20px}">AURORA</h1>
+</p>
 
 Aurora is a social media platform built using Next.js, designed for seamless user interactions with dummy data fetched from [dummyjson.com](https://dummyjson.com). It allows users to register, scroll through posts, view profiles, follow users, like posts, and comment on them.
 
