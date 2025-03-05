@@ -2,6 +2,17 @@ export interface ButtonDef {
 	text: string;
 	type: "button" | "submit" | "reset";
 	className?: string;
+	theme?: "primary" | "secondary";
+	size?: "sm" | "md" | "lg" | "xl";
+	icon?: React.ReactNode | undefined;
+	rounded?: boolean;
+	clickFn?: ((e: React.FormEvent) => void) | undefined;
+}
+
+export interface Button2Def {
+	text: string;
+	type: "button" | "submit" | "reset";
+	className?: string;
 	theme?: "primary" | "secondary" | "uprimary" | "usecondary";
 	size?: "sm" | "md" | "lg" | "xl";
 	icon?: React.ReactNode | undefined;

@@ -1,7 +1,7 @@
 // "use client";
 import { ButtonDef } from "@/app/lib/definations";
 
-const Button = ({ text, className, type, theme = "primary", size = "md", icon = undefined, clickFn }: ButtonDef) => {
+const Button = ({ text, className, type, theme = "primary", size = "md", icon = undefined, clickFn } : ButtonDef) => {
 	const sizes = {
 		sm: "text-sm",
 		md: "text-base",
@@ -11,7 +11,7 @@ const Button = ({ text, className, type, theme = "primary", size = "md", icon = 
 
 	const themes = {
 		primary: ["before:bg-primary before:border-primary-text", "bg-primary text-primary-text"],
-		secondary: ["before:bg-secondary before:border-secondary-text", "bg-secondary", "text-primary-text"],
+		secondary: ["before:bg-secondary before:border-secondary-text", "bg-secondary", "text-primary-text"]
 	}
 
 	return (

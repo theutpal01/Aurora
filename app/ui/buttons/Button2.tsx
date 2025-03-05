@@ -1,6 +1,6 @@
-import { ButtonDef } from "@/app/lib/definations"
+import { Button2Def } from "@/app/lib/definations"
 
-const Button2 = ({ text, className, type, theme = "primary", size = "md", clickFn, icon = undefined }: ButtonDef) => {
+const Button2 = ({ text, className, type, theme = "primary", size = "md", clickFn, icon = undefined }: Button2Def) => {
 	const sizes = {
 		sm: "text-sm",
 		md: "text-base",
