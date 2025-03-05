@@ -1,18 +1,30 @@
 import jwt from "jsonwebtoken";
 
-const SECRET = process.env.JWT_SECRET!;
+const SECRET = process.env.JWT_SECRET;
 
 // Generate JWT Token
 export const generateToken = (user: object) => {
-	console.log("Generating token for:", user, SECRET);
-	return jwt.sign(user, SECRET, { expiresIn: "1h" });
+	try {
+		if (!SECRET) {
+			throw new Error("JWT Secret not provided");
+		}
+		console.log("Generating token for:", user, SECRET);
+		return jwt.sign(user, SECRET, { expiresIn: "1h" });
+	} catch (err) {
+		console.error(err);
+		return null;
+	}
 };
 
 // Verify JWT Token
 export const verifyToken = (token: string) => {
 	try {
+		if (!SECRET) {
+			throw new Error("JWT Secret not provided");
+		}
 		return jwt.verify(token, SECRET);
 	} catch (err) {
+		console.error(err);
 		return null;
 	}
 };
