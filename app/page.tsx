@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "./hooks/useAuth";
-import { stringify } from "querystring";
 
 export default function Home() {
 	const isAuthenticated = useAuth();
