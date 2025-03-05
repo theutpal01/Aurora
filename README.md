@@ -1,34 +1,51 @@
 <p align="center">
   <img src="public/logo.svg" alt="Aurora Logo" width="150" height="150">
-  <h1 style="{font-size: 20px}">AURORA</h1>
 </p>
 
-Aurora is a social media platform built using Next.js, designed for seamless user interactions with dummy data fetched from [dummyjson.com](https://dummyjson.com). It allows users to register, scroll through posts, view profiles, follow users, like posts, and comment on them.
+<h1 align="center">🌌 Aurora - The Social Media Experience</h1>
 
-## Features
+<p align="center">
+  <b>Aurora is a modern social media platform built with Next.js, offering a seamless user experience using dummy data.</b>
+  <br>
+  <a href="#features">Features</a> • 
+  <a href="#tech-stack">Tech Stack</a> • 
+  <a href="#setup-and-installation">Setup</a> • 
+  <a href="#api-usage">API Usage</a> • 
+  <a href="#contribution">Contribute</a>
+</p>
 
-- User authentication using dummy data (not real authentication)
-- View and interact with posts
-- Follow and unfollow users
-- Like and comment on posts
-- Responsive UI with modern design
+---
 
-## Tech Stack
+<h2 id="features">✨ Features</h2>
 
-- **Frontend:** Next.js (React), Tailwind CSS
-- **Backend (API):** Dummy data from [dummyjson.com](https://dummyjson.com)
-- **State Management:** React Hooks
+✅ User authentication using dummy data (not real authentication)  
+✅ Browse, like, and comment on posts  
+✅ Follow and unfollow users  
+✅ Responsive UI with a modern and clean design  
 
-## Setup & Installation
+---
 
-### Prerequisites
+<h2 id="tech-stack">🚀 Tech Stack</h2>
 
-Ensure you have Node.js installed on your system.
+- **Frontend:** ⚛️ Next.js (React) + Tailwind CSS  
+- **Backend (API):** 🌐 Dummy data from [dummyjson.com](https://dummyjson.com)  
+- **State Management:** 🎯 React Hooks  
 
-### Steps to run the project
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/theutpal01/Aurora.git
-   cd Aurora
-   ```
+<h2 id="setup-and-installation">🔧 Setup and Installation</h2>
+
+### 📌 Prerequisites
+Ensure you have **Node.js** installed on your system.
+
+### 🛠 Steps to run the project
+```bash
+# Clone the repository
+git clone https://github.com/theutpal01/Aurora.git
+cd Aurora
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
