@@ -2,7 +2,7 @@
 import { useAuth } from "../hooks/useAuth";
 import Searchbar from "../ui/inputs/Searchbar"
 
-const page = () => {
+const Page = () => {
 	const isAuthenticated = useAuth();
 	if (!isAuthenticated) return null;
 
@@ -15,4 +15,4 @@ const page = () => {
 	)
 }
 
-export default page
+export default Page

@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { SiFrontendmentor } from "react-icons/si";
 
 const SECRET = process.env.JWT_SECRET!;
 

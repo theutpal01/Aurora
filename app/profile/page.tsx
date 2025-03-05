@@ -9,7 +9,7 @@ import { FaSave, FaShare } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import Input from "../ui/inputs/Input";
 
-const page = () => {
+const Page = () => {
 	const isAuthenticated = useAuth();
 	const [userData, setUserData] = useState<UserDef | null>(null);
 	const [dummyData, setDummyData] = useState<UserDef | null>(null);
@@ -116,4 +116,4 @@ const page = () => {
 	)
 }
 
-export default page
+export default Page

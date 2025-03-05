@@ -7,7 +7,7 @@ import { BiSolidSend } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../hooks/useAuth";
 
-const page = () => {
+const Page = () => {
 	const isAuthenticated = useAuth();
 	const [data, setData] = useState({
 		email: "",
@@ -77,4 +77,4 @@ const page = () => {
 	)
 }
 
-export default page
+export default Page
