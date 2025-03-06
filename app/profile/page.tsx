@@ -49,11 +49,11 @@ const Page = () => {
 
 	if (!isAuthenticated) return null;
 	return (
-		<>
-			{loading && <div className="text-primary-text bg-background h-[88vh] flex flex-col overflow-auto justify-center items-center" >Loading...</div>}
+		<div className="bg-background relative h-full w-full pb-24">
+			{loading && <div className="text-primary-text bg-background h-full flex flex-col overflow-auto justify-center items-center" >Loading...</div>}
 			{error && <div>{error}</div>}
 			{userData && dummyData &&
-				<div className="bg-background h-full flex flex-col overflow-auto justify-center items-center px-4 pb-24">
+				<div className="bg-background flex flex-col overflow-auto justify-center items-center px-4">
 					<div className="flex flex-col w-full py-4">
 						<div className="flex w-full items-center space-x-4">
 							<div className="w-3/12 flex justify-center items-center py-3">
@@ -72,7 +72,7 @@ const Page = () => {
 						</div>
 						<div className="flex space-x-4 justify-end mt-4">
 							<Button2 theme="primary" type="button" text="Edit Profile" size="md" icon={<FaPencil />} clickFn={() => setEdit(!edit)} />
-							<Button2 theme="uprimary" type="button" text="Share Profile" size="md" icon={<FaShare />} />
+							<Button2 theme="usecondary" type="button" text="" size="md" icon={<FaShare />} />
 						</div>
 					</div>
 					<div className="flex w-11/12 h-[1px] mb-4 bg-gray-200" />
@@ -92,7 +92,7 @@ const Page = () => {
 				</div>
 
 			}
-		</>
+		</div>
 	)
 }
 

@@ -6,8 +6,8 @@
 	--accent: #a14fff; /* Balanced purple tone */
 	--background: #0e0e20; /* Darker for true contrast */
 	--foreground: #18182e; /* Slightly darker for depth */
-	--text-primary: #f8f8ff; /* Softer white for readability */
-	--text-secondary: #b5b7e3; /* More vibrant for better contrast */
+	--primary-text: #f8f8ff; /* Softer white for readability */
+	--secondary-text: #b5b7e3; /* More vibrant for better contrast */
 }
 
 .light {
@@ -26,6 +26,6 @@
 	--color-accent: var(--accent);
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
-	--color-primary-text: var(--text-primary);
-	--color-secondary-text: var(--text-secondary);
+	--color-primary-text: var(--primary-text);
+	--color-secondary-text: var(--secondary-text);
 }

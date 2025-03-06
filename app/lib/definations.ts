@@ -20,6 +20,15 @@ export interface Button2Def {
 	clickFn?: ((e: React.FormEvent) => void) | undefined;
 }
 
+export interface ReactionBtnDef {
+	text: string;
+	className?: string;
+	size?: "sm" | "md" | "lg" | "xl";
+	checked: boolean;
+	icon?: React.ReactNode | undefined;
+	clickFn?: ((e: React.FormEvent) => void) | undefined;
+}
+
 export interface InputDef {
 	text: string;
 	className?: string;
@@ -42,4 +51,15 @@ export interface UserDef {
 	image: string;
 	phone: string;
 	gender: string;
+}
+
+export interface PostDef{
+	id: string;
+	title: string;
+	body: string;
+	tags: string[];
+	userId: string
+	image: string;
+	reactions: { likes: number, dislikes: number };
+	views: number;
 }

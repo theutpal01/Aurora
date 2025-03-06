@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "./hooks/useAuth";
 import PostCard from "./ui/cards/PostCard";
+import { PostDef } from "./lib/definations";
 
 export default function Home() {
 	const isAuthenticated = useAuth();
-	const [posts, setPosts] = useState<Array<object>>([]);
+	const [posts, setPosts] = useState<Array<PostDef>>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
 
@@ -34,17 +35,28 @@ export default function Home() {
 	if (!isAuthenticated) return null;
 
 	return (
-		<div className="bg-background h-[88vh] flex justify-center items-center">
+		<div className="bg-background relative h-full flex justify-center items-center">
 			{loading && <h2 className="text-primary-text">Loading...</h2>}
 			{error &&
 				<h3 className="text-primary-text">{error}</h3>
 			}
 
 			{posts &&
-				<div>
-					<PostCard />
+				<div className="grid h-full grid-cols-1 justify-center gap-5 pb-24 pt-6">
+					{posts.map((post: PostDef) => (
+						<PostCard key={post.id} post={{
+							id: post.id,
+							title: post.title,
+							body: post.body,
+							tags: post.tags,
+							userId: post.userId,
+							image: "/posts/" + Math.floor(Math.random() * 5 + 1) + ".png",
+							reactions: post.reactions,
+							views: post.views
+						}} />
+					))}
 				</div>
 			}
-		</div>
+		</div >
 	);
 }
