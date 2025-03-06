@@ -33,30 +33,10 @@ const Page = () => {
 				});
 
 				const data = await res.json();
-				console.log("Data:", data);
 				if (!res.ok) throw new Error(data.error);
 
-				setUserData({
-					id: data.id,
-					username: data.username,
-					firstname: data.firstName,
-					lastname: data.lastName,
-					email: data.email,
-					image: data.image,
-					phone: data.phone,
-					gender: data.gender,
-				});
-
-				setDummyData({
-					id: data.id,
-					username: data.username,
-					firstname: data.firstName,
-					lastname: data.lastName,
-					email: data.email,
-					image: data.image,
-					phone: data.phone,
-					gender: data.gender,
-				});
+				setUserData(data);
+				setDummyData(data);
 			} catch (err) {
 				setError((err as Error).message);
 			} finally {

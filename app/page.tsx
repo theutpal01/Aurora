@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "./hooks/useAuth";
+import PostCard from "./ui/cards/PostCard";
 
 export default function Home() {
 	const isAuthenticated = useAuth();
@@ -34,8 +35,16 @@ export default function Home() {
 
 	return (
 		<div className="bg-background h-[88vh] flex justify-center items-center">
-			{ loading && <h2 className="text-primary-text">Loading...</h2> }
-			{error && <h3 className="text-primary-text">{error}</h3>}
+			{loading && <h2 className="text-primary-text">Loading...</h2>}
+			{error &&
+				<h3 className="text-primary-text">{error}</h3>
+			}
+
+			{posts &&
+				<div>
+					<PostCard />
+				</div>
+			}
 		</div>
 	);
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { getToken } from "../lib/auth";
 
 export const useAuth = () => {
 	const router = useRouter();
@@ -9,7 +10,12 @@ export const useAuth = () => {
 	useEffect(() => {
 		const checkAuth = async () => {
 			try {
-				const res = await fetch("/api/auth/me", { credentials: "include" });
+				const res = await fetch("/api/auth/me", {
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${getToken()}`
+					}
+				});
 				const data = await res.json();
 
 				if (!data.authenticated) {
