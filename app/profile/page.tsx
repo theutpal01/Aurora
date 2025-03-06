@@ -49,28 +49,28 @@ const Page = () => {
 
 	if (!isAuthenticated) return null;
 	return (
-		<div className="bg-background relative h-full w-full pb-24">
+		<div className="bg-background relative h-full w-full">
 			{loading && <div className="text-primary-text bg-background h-full flex flex-col overflow-auto justify-center items-center" >Loading...</div>}
 			{error && <div>{error}</div>}
 			{userData && dummyData &&
 				<div className="bg-background flex flex-col overflow-auto justify-center items-center px-4">
 					<div className="flex flex-col w-full py-4">
 						<div className="flex w-full items-center space-x-4">
-							<div className="w-3/12 flex justify-center items-center py-3">
+							<div className="w-3/12  flex justify-center items-center py-3">
 								<div className="rounded-full w-fit bg-foreground p-3 shadow">
-									<Image src={userData.image} alt={userData?.username} width={100} height={100} />
+									<Image className="w-52 " src={userData.image} alt={userData?.username} width={100} height={100} />
 								</div>
 							</div>
-							<div className="w-9/12 flex space-y-4 flex-col">
+							<div className="grow flex space-y-4 pl-5 flex-col">
 								<h2 className="font-semibold text-primary-text text-lg">{userData.firstname + " " + userData.lastname}<span className="font-normal text-sm">{` (${userData.username})`}</span></h2>
-								<div className="flex text-xs justify-around text-secondary-text">
-									<p className="flex flex-col"><span className="text-base font-bold text-primary-text">10</span>Posts</p>
-									<p className="flex flex-col"><span className="text-base font-bold text-primary-text">25</span>Followers</p>
-									<p className="flex flex-col"><span className="text-base font-bold text-primary-text">87</span>Following</p>
+								<div className="flex text-sm justify-around text-secondary-text">
+									<p className="flex flex-col"><span className="text-xl font-bold text-primary-text">10</span>Posts</p>
+									<p className="flex flex-col"><span className="text-xl font-bold text-primary-text">25</span>Followers</p>
+									<p className="flex flex-col"><span className="text-xl font-bold text-primary-text">87</span>Following</p>
 								</div>
 							</div>
 						</div>
-						<div className="flex space-x-4 justify-end mt-4">
+						<div className="flex space-x-4 justify-start mt-6">
 							<Button2 theme="primary" type="button" text="Edit Profile" size="md" icon={<FaPencil />} clickFn={() => setEdit(!edit)} />
 							<Button2 theme="usecondary" type="button" text="" size="md" icon={<FaShare />} />
 						</div>

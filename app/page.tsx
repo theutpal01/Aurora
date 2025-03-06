@@ -35,14 +35,14 @@ export default function Home() {
 	if (!isAuthenticated) return null;
 
 	return (
-		<div className="bg-background relative h-full flex justify-center items-center">
-			{loading && <h2 className="text-primary-text">Loading...</h2>}
+		<div className="bg-background relative w-full  flex justify-center items-center">
+			{loading && <div className="flex h-[90%] w-full justify-center items-center"><h2 className="text-primary-text">Loading...</h2></div>}
 			{error &&
 				<h3 className="text-primary-text">{error}</h3>
 			}
 
 			{posts &&
-				<div className="grid h-full grid-cols-1 justify-center gap-5 pb-24 pt-6">
+				<div className="grid h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5 mx-4 my-8">
 					{posts.map((post: PostDef) => (
 						<PostCard key={post.id} post={{
 							id: post.id,

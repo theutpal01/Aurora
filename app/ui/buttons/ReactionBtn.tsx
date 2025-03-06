@@ -31,7 +31,7 @@ const ReactionBtn = ({ name, initialLikes }: { name: string, initialLikes: numbe
 	};
 	return (
 		<StyledWrapper>
-			<div className="container bg-background">
+			<div className="container bg-background shadow-xl">
 				<label htmlFor={`dislike-${name}`}>
 					<input type="radio" name={`evaluation-${name}`} id={`dislike-${name}`} checked={reaction === "dislike"} value={"dislike"} onClick={() => handleReaction("dislike")} onChange={() => handleReaction("dislike")} />
 					<svg className={`icon dislike ${reaction === "dislike" ? "fill-red-500" : "fill-primary-text"}`} xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">

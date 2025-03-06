@@ -6,7 +6,7 @@ const Page = () => {
 	if (!isAuthenticated) return null;
 
 	return (
-		<div className="bg-background h-full flex justify-center items-center">EXPLORE</div>
+		<div className="bg-background h-full w-full flex justify-center items-center">EXPLORE</div>
 	)
 }
 

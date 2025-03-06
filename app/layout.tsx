@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./ui/layout/Navbar";
 import Header from "./ui/layout/Header";
+import Sidebar from "./ui/layout/Sidebar";
 
 
 // const geistSans = Geist({
@@ -29,10 +30,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="relative light bg-background">
+			<body className="relative overflow-hidden light bg-background">
 				<Header />
 				<Navbar theme="primary" />
-				{children}
+				<div className="flex h-full max-h-[89vh] md:max-h-[90vh]">
+					<Sidebar theme="primary" />
+					<div className="w-full overflow-auto mb-18 md:mb-0">
+						{children}
+					</div>
+				</div>
 			</body>
 		</html>
 	);
