@@ -5,14 +5,15 @@ import React from 'react'
 import { GoHomeFill, GoPersonFill, GoTelescopeFill } from "react-icons/go";
 import { RiSearchFill } from "react-icons/ri";
 
-const Sidebar = ({ theme }: { theme: "primary" | "secondary" }) => {
+const Sidebar = ({ theme }: { theme: "primary" | "secondary" | "accent" }) => {
 
 	const themes = {
 		primary: "bg-foreground *:text-primary-text",
-		secondary: "bg-secondary *:text-primary-text"
+		secondary: "bg-foreground *:text-primary-text",
+		accent: "bg-foreground *:text-primary-text"
 	}
 
-	const active = `bg-background w-9/12 inset-shadow-[-3px_4px_11px_-7px_#101] ${theme === "primary" ? "*:text-primary" : "text-secondary"}`
+	const active = `bg-background w-9/12 inset-shadow-[-3px_4px_11px_-7px_#101] ${theme === "primary" ? "*:text-primary" : (theme === "secondary") ? "text-secondary" : "text-accent"}`
 
 	const pathname = usePathname();
 	return (

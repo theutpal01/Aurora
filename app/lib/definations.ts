@@ -13,7 +13,7 @@ export interface Button2Def {
 	text: string;
 	type: "button" | "submit" | "reset";
 	className?: string;
-	theme?: "primary" | "secondary" | "uprimary" | "usecondary";
+	theme?: "primary" | "secondary" | "accent" | "uprimary" | "usecondary" | "uaccent";
 	size?: "sm" | "md" | "lg" | "xl";
 	icon?: React.ReactNode | undefined;
 	rounded?: boolean;

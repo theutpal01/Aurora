@@ -1,18 +1,21 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
-import { decodeToken, getToken } from "../lib/auth";
+import { decodeToken, getToken, logout } from "../lib/auth";
 import { UserDef } from "../lib/definations";
 import Image from "next/image";
 import Button2 from "../ui/buttons/Button2";
 import { FaSave, FaShare } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
+import { LuLogOut } from "react-icons/lu";
 import Input from "../ui/inputs/Input";
 import Loading from "../ui/controls/Loading";
+import { useRouter } from "next/navigation";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
 const Page = () => {
+	const router = useRouter();
 	const isAuthenticated = useAuth();
 	const [userData, setUserData] = useState<UserDef | null>(null);
 	const [dummyData, setDummyData] = useState<UserDef | null>(null);
@@ -89,7 +92,10 @@ const Page = () => {
 								<Input text={dummyData.email} type="email" placeholder="Email" name="email" handleChange={(e) => setDummyData({ ...dummyData, email: e.target.value })} />
 								<Input text={dummyData.phone} type="text" placeholder="Phone" name="phone" handleChange={(e) => setDummyData({ ...dummyData, phone: e.target.value })} />
 								<Input text={dummyData.gender} type="text" placeholder="Gender" name="gender" handleChange={(e) => setDummyData({ ...dummyData, gender: e.target.value })} />
-								<Button2 text="Save" type="submit" theme="secondary" size="sm" clickFn={(e) => { e.preventDefault(); console.log(dummyData) }} icon={<FaSave />} />
+								<div className="flex space-x-4">
+									<Button2 text="Save" type="submit" theme="secondary" size="sm" clickFn={(e) => { e.preventDefault(); console.log(dummyData) }} icon={<FaSave />} />
+									<Button2 text="Logout" type="button" theme="primary" icon={<LuLogOut />} size="sm" clickFn={() => { logout(); router.push("/login"); }} />
+								</div>
 							</form>
 						</div>
 					</div>

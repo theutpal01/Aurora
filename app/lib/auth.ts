@@ -52,3 +52,9 @@ export const decodeToken = (token: string): { id: string; email: string } | null
 		return null;
 	}
 };
+
+
+export const logout = () => {
+	const token = document.cookie.slice(document.cookie.indexOf("token=")).split(";")[0];
+	document.cookie = `${token}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}

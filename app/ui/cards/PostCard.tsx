@@ -22,7 +22,7 @@ const PostCard = ({ post, setPost }: { post: PostDef, setPost: React.Dispatch<Re
 					</div>
 
 					<div className="flex w-full justify-between">
-						<Button2 clickFn={() => setPost(post.id)} text="Comments" type="button" size="sm" />
+						<Button2 clickFn={() => setPost(post.id)} theme="accent" text="Comments" type="button" size="sm" />
 						<ReactionBtn name={post.id} initialLikes={post.reactions.likes} />
 					</div>
 				</div>

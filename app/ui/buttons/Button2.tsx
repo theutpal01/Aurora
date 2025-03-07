@@ -11,8 +11,10 @@ const Button2 = ({ text, className, type, theme = "primary", size = "md", clickF
 	const themes = {
 		primary: "text-white bg-primary px-6 py-3",
 		secondary: "text-primary-text bg-secondary px-6 py-3",
+		accent: "text-white bg-accent px-6 py-3",
 		uprimary: "bg-transparent text-primary-text border-4 border-primary hover:bg-primary hover:text-white duration-100 px-5 py-2",
 		usecondary: "bg-transparent text-primary-text border-4 border-secondary hover:bg-secondary hover:text-white duration-100 px-5 py-2",
+		uaccent: "bg-transparent text-primary-text border-4 border-accent hover:bg-accent hover:text-white duration-100 px-5 py-2",
 	}
 
 	return (

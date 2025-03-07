@@ -21,7 +21,7 @@ export default function RootLayout({
 				<Header />
 				<Navbar theme="primary" />
 				<div className="flex h-full max-h-[89vh] md:max-h-[90vh]">
-					<Sidebar theme="primary" />
+					<Sidebar theme="accent" />
 					<div className="w-full font-body antialiased overflow-auto mb-18 md:mb-0">
 							{children}
 					</div>
