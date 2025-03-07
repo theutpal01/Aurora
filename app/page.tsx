@@ -3,18 +3,44 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "./hooks/useAuth";
 import PostCard from "./ui/cards/PostCard";
-import { PostDef } from "./lib/definations";
-import PostView from "./ui/cards/PostView";
+import { PostDef, UserDef } from "./lib/definations";
 import Loading from "./ui/controls/Loading";
+import PostView from "./ui/views/PostView";
+import UsersView from "./ui/views/UsersView";
 
 export default function Home() {
 	const isAuthenticated = useAuth();
 	const [postNumber, setPostNumber] = useState<string | null>(null);
+	const [suggestions, setSuggestions] = useState<UserDef[]>([]);
 	const [posts, setPosts] = useState<Array<PostDef>>([]);
 	const [loading, setLoading] = useState<boolean>(true);
+	const [loadingUsers, setLoadingUser] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
 
 	useEffect(() => {
+
+		const fetchSuggestedUsers = async (posts: Array<PostDef>) => {
+			try {
+				const uniqueUserIds = [...(new Set(posts.map((post) => post.userId)))];
+				console.log("UNIQUID: ", uniqueUserIds);
+				const userProfiles = await Promise.all(
+					uniqueUserIds.map(async (userId) => {
+						const res = await fetch("/api/profile/", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({ userId }),
+						});
+						return res.json();
+					})
+				);
+				console.log(userProfiles);
+				setSuggestions(userProfiles);
+			} catch (err) {
+				setError((err as Error).message);
+			} finally {
+				setLoadingUser(false);
+			}
+		};
 
 		const fetchPosts = async () => {
 			try {
@@ -37,6 +63,7 @@ export default function Home() {
 					}
 				});
 				setPosts(postsData);
+				fetchSuggestedUsers(postsData);
 			} catch (err) {
 				setError((err as Error).message);
 			} finally {
@@ -56,14 +83,21 @@ export default function Home() {
 				<h3 className="text-primary-text">{error}</h3>
 			}
 
-			{posts &&
-				<div className="grid h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5 mx-4 my-8">
-					{posts.map((post: PostDef) => (
-						<PostCard key={post.id} setPost={setPostNumber} post={post} />
+			{!loading && posts &&
+				<div className="flex justify-between items-center w-full h-full space-x-2">
+					<div className="grid p-5 grow overflow-auto justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
+						{posts.map((post: PostDef) => (
+							<PostCard key={post.id} setPost={setPostNumber} post={post} />
 
-					))}
-					<PostView setPostNumber={setPostNumber} post={posts.filter((post) => post.id === postNumber)[0]} />
+						))}
+						<PostView setPostNumber={setPostNumber} post={posts.filter((post) => post.id === postNumber)[0]} />
 
+					</div>
+					<div className="hidden xl:flex justify-center items-center h-full w-[2px] bg-gray-500/50">
+					</div>
+					<div className="hidden xl:flex justify-center w-1/4 py-2 h-full overflow-auto">
+						<UsersView loading={loadingUsers} suggestions={suggestions} />
+					</div>
 				</div>
 			}
 		</div >

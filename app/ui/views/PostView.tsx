@@ -2,12 +2,12 @@ import { CommentDef, PostDef, UserPostDef } from "@/app/lib/definations"
 import Image from "next/image";
 import React, { useEffect, useState } from "react"
 import { BiCollapse } from "react-icons/bi"
-import Tag from "./Tag";
 import { FaEye, FaSave } from "react-icons/fa";
 import Loading from "../controls/Loading";
-import CommentCard from "./CommentCard";
 import Input from "../inputs/Input";
 import Button2 from "../buttons/Button2";
+import Tag from "../cards/Tag";
+import CommentCard from "../cards/CommentCard";
 
 const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React.SetStateAction<string | null>>, post: PostDef | null }) => {
 	const [show, setShow] = useState<boolean>(false);
