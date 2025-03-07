@@ -11,7 +11,7 @@ const ExploreView = ({ data }: { data: { tag: string, posts: Array<PostDef> } })
 	return (
 		<div className='flex flex-col text-primary-text space-y-3'>
 			<div className='flex justify-between items-center'>
-				<h2 className='text-2xl font-semibold'>{`More on ${data.tag[0].toUpperCase() + data.tag.slice(1)}`}</h2>
+				<h2 className='text-2xl font-heading'>{`More on ${data.tag[0].toUpperCase() + data.tag.slice(1)}`}</h2>
 			</div>
 			<div className='flex gap-3 flex-wrap justify-center'>
 				<PostView setPostNumber={setPostNumber} post={data.posts.filter((post) => post.id === postNumber)[0]} />

@@ -2,7 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "../hooks/useAuth";
 import Searchbar from "../ui/inputs/Searchbar"
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { PostDef } from "../lib/definations";
 import Loading from "../ui/controls/Loading";
 import PostCard from "../ui/cards/PostCard";
@@ -66,18 +66,20 @@ const Page = () => {
 			</div>
 			{loading && <div className="w-full flex h-full"><Loading /></div>}
 			{error && <h3 className="text-primary-text">{error}</h3>}
-			{!loading && posts && (
-				<PerfectScrollbar className="flex flex-col w-full h-full">
-					{queryRes !== "" && <h2 className="p-7 w-full text-lg text-primary-text font-semibold">{`Search Result for: ${query}`}</h2>}
-					{queryRes !== "" && posts.length === 0 && <p className="text-secondary-text text-center text-sm">No results found</p>}
-					<div className="relative grid p-3 w-full overflow-x-hidden justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-center gap-5">
-						{posts.map((post: PostDef) => (
-							<PostCard key={post.id} setPost={setPostNumber} post={post} />
-						))}
-					</div>
+			<Suspense fallback={<div className="w-full flex h-full"><Loading /></div>}>
+				{!loading && posts && (
+					<PerfectScrollbar className="flex flex-col w-full h-full">
+						{queryRes !== "" && <h2 className="p-7 w-full text-xl text-primary-text font-normal">{`Search results for: `}<strong className="font-semibold">{query}</strong></h2>}
+						{queryRes !== "" && posts.length === 0 && <p className="text-secondary-text text-center">No results found</p>}
+						<div className="relative grid p-3 w-full overflow-x-hidden justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-center gap-5">
+							{posts.map((post: PostDef) => (
+								<PostCard key={post.id} setPost={setPostNumber} post={post} />
+							))}
+						</div>
 
-				</PerfectScrollbar>
-			)}
+					</PerfectScrollbar>
+				)}
+			</Suspense>
 			<PostView post={posts.filter((post) => post.id === postNumber)[0]} setPostNumber={setPostNumber} />
 		</div>
 	)

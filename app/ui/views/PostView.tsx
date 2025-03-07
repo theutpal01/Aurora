@@ -46,7 +46,6 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 					})
 				);
 				commentsData.comments = updatedComments;
-				console.log("COMMENTS: ", commentsData);
 				setComments(commentsData.comments);
 			} catch (err) {
 				console.log(err)
@@ -99,8 +98,8 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 
 								<div className="flex flex-col justify-between h-full">
 									<div className="py-3">
-										<h2 className="text-lg font-semibold text-primary-text mt-2">{postData.title}</h2>
-										<p className="text-sm text-secondary-text mt-2">{postData.body}</p>
+										<h2 className="text-2xl font-semibold text-primary-text mt-2">{postData.title}</h2>
+										<p className="text-secondary-text mt-2">{postData.body}</p>
 									</div>
 
 									<div className="flex flex-row w-full justify-between items-baseline">
@@ -126,11 +125,11 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 								</div>
 							</div>
 							<div className="md:w-[2px] w-full flex items-center">
-								<div className="w-full h-[2px] md:h-full bg-white"></div>
+								<div className="w-full h-[2px] md:h-full bg-foreground/50"></div>
 							</div>
 							<div className="flex flex-col justify-between space-y-2 grow">
 								<PerfectScrollbar className="overflow-auto">
-									<h2 className="text-primary-text pb-5 text-3xl">Comments</h2>
+									<h2 className="text-primary-text pb-5 text-2xl font-heading">Comments</h2>
 									<div className="w-full flex flex-col p-4">
 										{comments.map((comment) => (
 											<CommentCard key={comment.id} comment={comment} />

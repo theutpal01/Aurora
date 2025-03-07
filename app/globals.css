@@ -28,4 +28,33 @@
 	--color-foreground: var(--foreground);
 	--color-primary-text: var(--primary-text);
 	--color-secondary-text: var(--secondary-text);
+	
+	--font-title: "Crypto", sans-serif;
+	--font-heading: "Audiowide", arial, sans-serif;
+	--font-body: "Homenaje", poppins, sans-serif;
+}
+
+@font-face {
+	font-family: Crypto;
+	font-style: normal;
+	font-size: 25px;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/Crypto.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: Audiowide;
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/Audiowide.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: Homenaje;
+	font-style: normal;
+	font-weight: 200 400;
+	font-display: swap;
+	src: url("/fonts/Homenaje.ttf") format("truetype");
 }

@@ -2,10 +2,10 @@ import { Button2Def } from "@/app/lib/definations"
 
 const Button2 = ({ text, className, type, theme = "primary", size = "md", clickFn, icon = undefined }: Button2Def) => {
 	const sizes = {
-		sm: "text-sm",
-		md: "text-base",
-		lg: "text-lg",
-		xl: "text-xl",
+		sm: "text-base",
+		md: "text-xl",
+		lg: "text-2xl",
+		xl: "text-3xl",
 	}
 
 	const themes = {

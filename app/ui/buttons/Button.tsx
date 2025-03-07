@@ -3,10 +3,10 @@ import { ButtonDef } from "@/app/lib/definations";
 
 const Button = ({ text, className, type, theme = "primary", size = "md", icon = undefined, clickFn } : ButtonDef) => {
 	const sizes = {
-		sm: "text-sm",
-		md: "text-base",
-		lg: "text-lg",
-		xl: "text-xl",
+		sm: "text-base",
+		md: "text-lg",
+		lg: "text-xl",
+		xl: "text-2xl",
 	}
 
 	const themes = {

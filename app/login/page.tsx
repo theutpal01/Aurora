@@ -48,10 +48,10 @@ const Page = () => {
 	}
 	return (
 		<div className="bg-background absolute h-screen w-screen md:bg-white md:flex md:justify-center md:items-center">
-			<div className="w-full md:bg-background md:rounded-2xl md:shadow-lg md:max-w-3/4 flex h-full flex-col md:flex-row justify-start md:justify-center items-center p-4 md:max-h-2/3">
+			<div className="w-full md:bg-primary/10 md:rounded-2xl md:shadow-lg md:max-w-3/5 flex h-full flex-col md:flex-row justify-start md:justify-center items-center p-4 md:max-h-2/3">
 				<div className="flex md:w-1/2 flex-col items-center space-y-4 mt-6">
 					<Image className="size-40 md:size-44 lg:size-56" src="logo.svg" alt="Aurora Logo" width={100} height={100} />
-					<h1 className="text-4xl uppercase">Aurora</h1>
+					<h1 className="text-4xl uppercase font-title">Aurora</h1>
 				</div>
 				<form onSubmit={handleLogin} className="flex md:w-1/2 lg:px-8 justify-center h-full flex-col w-full space-y-5">
 					<Input

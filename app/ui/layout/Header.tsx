@@ -14,7 +14,7 @@ const Header = () => {
 						<Image src="/logo.svg" className="h-full aspect-square" alt="Aurora Logo" width={40} height={40} />
 					</Link>
 					<Link href="/">
-						<h1 className="text-3xl font-bold text-primary-text">Aurora</h1>
+						<h1 className="text-3xl font-bold text-primary-text font-title">Aurora</h1>
 					</Link>
 				</div>
 				<ThemeControl />

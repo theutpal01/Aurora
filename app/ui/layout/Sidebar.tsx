@@ -18,8 +18,8 @@ const Sidebar = ({ theme }: { theme: "primary" | "secondary" }) => {
 	return (
 		<>
 			{!pathname.includes("/login") &&
-				<nav className={`h-[89vh] md:h-[90vh] w-96 lg:w-[275px] xl:w-96 z-50 ${themes[theme]} hidden md:flex flex-col py-5 drop-shadow-md`}>
-					<div className='flex *:flex flex-col grow *:space-x-4 items-center *:w-10/12 *:p-4 *:text-xl *:duration-200 *:hover:scale-105 *:hover:bg-background *:rounded-xl gap-2'>
+				<nav className={`h-[89vh] md:h-[90vh] font-heading w-96 lg:w-[275px] xl:w-96 z-50 ${themes[theme]} hidden md:flex flex-col py-5 drop-shadow-md`}>
+					<div className='flex *:flex flex-col grow *:space-x-4 items-center *:w-10/12 *:p-4 *:text-lg *:duration-200 *:hover:scale-105 *:hover:bg-background *:rounded-xl gap-2'>
 						<Link className={`${pathname === "/explore" ? active : ""}`} href="/explore">
 							<GoTelescopeFill className={`size-6`} />
 							<p>Explore</p>
@@ -33,7 +33,7 @@ const Sidebar = ({ theme }: { theme: "primary" | "secondary" }) => {
 							<p>Home</p>
 						</Link>
 					</div>
-					<div className='flex flex-col items-center *:flex *:p-4 *:space-x-4 *:text-xl *:w-10/12 *:duration-200 *:hover:scale-105 *:hover:bg-background *:rounded-xl'>
+					<div className='flex flex-col items-center *:flex *:p-4 *:space-x-4 *:text-lg *:w-10/12 *:duration-200 *:hover:scale-105 *:hover:bg-background *:rounded-xl'>
 						<Link className={`${pathname === "/profile" ? active : ""}`} href="/profile">
 							<GoPersonFill className={`size-6`} />
 							<p>Profile</p>

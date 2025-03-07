@@ -8,7 +8,7 @@ const CommentCard = ({ comment }: { comment: CommentDef }) => {
 				<Image src={comment.user.image} alt={comment.user.username} width={60} height={60} />
 			</div>
 			<div className="flex flex-col">
-				<h4 className="font-semibold text-primary-text">{comment.user.username}</h4>
+				<h4 className="font-normal text-primary-text">{comment.user.username}</h4>
 				<p className="text-sm text-secondary-text">{comment.body}</p>
 			</div>
 		</div>

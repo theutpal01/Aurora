@@ -17,9 +17,9 @@ const Navbar = ({ theme }: { theme: "primary" | "secondary" }) => {
 
 	return (
 		<>
-			{!pathname.includes("/login") && <nav className={`fixed bottom-0 left-0 w-full z-50 ${themes[theme]} h-20 flex md:hidden *:flex overflow-hidden justify-around  bg-background items-end *:h-full *:justify-center *:items-center *:w-full *:duration-400`}>
+			{!pathname.includes("/login") && <nav className={`fixed font-heading bottom-0 left-0 w-full z-50 ${themes[theme]} h-20 flex md:hidden *:flex overflow-hidden justify-around  bg-background items-end *:h-full *:justify-center *:items-center *:w-full *:duration-400`}>
 				<Link className={`${pathname === "/explore" ? active : ""} ${pathname === "/search" ? "rounded-tr-2xl" : ''}`} href="/explore">
-					<GoTelescopeFill className={`${pathname === "/explore" ? "text-white" : "text-gray-100"} size-6`} />
+					<GoTelescopeFill className={`font-heading ${pathname === "/explore" ? "text-white" : "text-gray-100"} size-6`} />
 				</Link>
 				<Link className={`${pathname === "/search" ? active : ""} ${pathname === "/" ? "rounded-tr-2xl" : (pathname === "/explore") ? "rounded-tl-2xl" : ""}`} href="/search">
 					<RiSearchFill className={`${pathname === "/search" ? "text-white" : "text-gray-100"} size-6`} />

@@ -65,23 +65,23 @@ const Page = () => {
 									</div>
 								</div>
 								<div className="grow flex space-y-4 pl-5 flex-col">
-									<h2 className="font-semibold text-primary-text text-lg">{userData.firstname + " " + userData.lastname}<span className="font-normal text-sm">{` (${userData.username})`}</span></h2>
-									<div className="flex text-sm justify-around text-secondary-text">
+									<h2 className="font-semibold text-primary-text text-2xl">{userData.firstname + " " + userData.lastname}<span className="font-normal text-base">{`  (${userData.username})`}</span></h2>
+									<div className="flex text justify-around text-secondary-text">
 										<p className="flex flex-col"><span className="text-xl font-bold text-primary-text">10</span>Posts</p>
 										<p className="flex flex-col"><span className="text-xl font-bold text-primary-text">25</span>Followers</p>
 										<p className="flex flex-col"><span className="text-xl font-bold text-primary-text">87</span>Following</p>
 									</div>
 								</div>
 							</div>
-							<div className="flex space-x-4 justify-start mt-6">
-								<Button2 theme="primary" type="button" text="Edit Profile" size="md" icon={<FaPencil />} clickFn={() => setEdit(!edit)} />
-								<Button2 theme="usecondary" type="button" text="" size="md" icon={<FaShare />} />
+							<div className="flex w-11/12 self-center space-x-4 justify-start mt-6">
+								<Button2 theme="primary" type="button" text="Edit Profile" size="sm" icon={<FaPencil />} clickFn={() => setEdit(!edit)} />
+								<Button2 theme="usecondary" type="button" text="" size="sm" icon={<FaShare />} />
 							</div>
 						</div>
-						<div className="flex w-11/12 h-[1px] mb-4 bg-gray-200" />
+						<div className="flex w-full h-[1px] mb-4 bg-gray-200" />
 
 						<div className={`flex ${edit ? "h-full" : "h-full"} duration-300 flex-col items-baseline w-full`}>
-							<h2 className="text-3xl font-bold text-primary-text">Edit Profile</h2>
+							<h2 className="text-3xl text-primary-text font-heading">Edit Profile</h2>
 							<form className="w-full space-y-4 py-4">
 								<Input text={dummyData.username} type="text" placeholder="Username" name="username" handleChange={(e) => setDummyData({ ...dummyData, username: e.target.value })} />
 								<Input text={dummyData.firstname} type="text" placeholder="First Name" name="firstname" handleChange={(e) => setDummyData({ ...dummyData, firstname: e.target.value })} />
@@ -89,7 +89,7 @@ const Page = () => {
 								<Input text={dummyData.email} type="email" placeholder="Email" name="email" handleChange={(e) => setDummyData({ ...dummyData, email: e.target.value })} />
 								<Input text={dummyData.phone} type="text" placeholder="Phone" name="phone" handleChange={(e) => setDummyData({ ...dummyData, phone: e.target.value })} />
 								<Input text={dummyData.gender} type="text" placeholder="Gender" name="gender" handleChange={(e) => setDummyData({ ...dummyData, gender: e.target.value })} />
-								<Button2 text="Save" type="submit" theme="secondary" size="md" clickFn={(e) => { e.preventDefault(); console.log(dummyData) }} icon={<FaSave />} />
+								<Button2 text="Save" type="submit" theme="secondary" size="sm" clickFn={(e) => { e.preventDefault(); console.log(dummyData) }} icon={<FaSave />} />
 							</form>
 						</div>
 					</div>

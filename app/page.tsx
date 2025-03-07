@@ -96,9 +96,9 @@ export default function Home() {
 
 						</div>
 					</PerfectScrollbar>
-					<div className="flex w-1/3 border-l border-foreground bg-background drop-shadow h-full">
+					<div className="hidden xl:flex w-1/3 border-l border-foreground bg-background drop-shadow h-full">
 						<PerfectScrollbar className="w-full">
-							<div className="hidden xl:flex px-3 justify-center w-full h-full overflow-x-hidden">
+							<div className="px-3 justify-center w-full h-full overflow-x-hidden">
 								<UsersView loading={loadingUsers} suggestions={suggestions} />
 							</div>
 						</PerfectScrollbar>

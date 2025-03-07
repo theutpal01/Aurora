@@ -14,7 +14,7 @@ const PostCard = ({ post, setPost }: { post: PostDef, setPost: React.Dispatch<Re
 				</div>
 				<div className="flex flex-col justify-between h-full">
 					<div className="py-3">
-						<h2 className="text-base font-semibold text-primary-text mt-2">{post.title}</h2>
+						<h2 className="text-lg font-normal text-primary-text mt-2">{post.title}</h2>
 						<p className="text-sm text-secondary-text mt-2">{post.body.slice(0, 150)}...</p>
 						<div className="flex space-x-2 py-3 justify-end">
 							{post.tags.map((tag) => (<Tag key={tag} text={tag} />))}
