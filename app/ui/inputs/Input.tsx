@@ -17,7 +17,7 @@ const Input = ({ text, className, name, placeholder="Enter text", theme = "prima
 	return (
 		<div className="flex leading-8 items-center relative min-w-56">
 			{icon && <div className="absolute left-3">{icon}</div>}
-			<input className={`w-full h-11 leading-8 ${className} ${sizes[size]} ${icon ? "px-12" : "px-4"} ${themes[theme]} border-2 border-transparent rounded-xl bg-foreground text-primary-text duration-300 ease-linear outline-0 placeholder-gray shadow focus:outline-0 focus:shadow-lg hover:outline-0 hover:shadow-lg`} type={type} placeholder={placeholder} onChange={handleChange} value={text} name={name} />
+			<input className={`w-full h-12 leading-8 ${className} ${sizes[size]} ${icon ? "px-12" : "px-4"} ${themes[theme]} border-2 border-transparent rounded-xl bg-foreground text-primary-text duration-300 ease-linear outline-0 placeholder-gray shadow focus:outline-0 focus:shadow-lg hover:outline-0 hover:shadow-lg`} type={type} placeholder={placeholder} onChange={handleChange} value={text} name={name} />
 		</div>
 	)
 }

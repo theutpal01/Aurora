@@ -53,7 +53,7 @@ export interface UserDef {
 	gender: string;
 }
 
-export interface PostDef{
+export interface PostDef {
 	id: string;
 	title: string;
 	body: string;
@@ -62,4 +62,30 @@ export interface PostDef{
 	image: string;
 	reactions: { likes: number, dislikes: number };
 	views: number;
+}
+
+export interface UserPostDef {
+	id: string;
+	title: string;
+	body: string;
+	tags: string[];
+	image: string;
+	reactions: { likes: number, dislikes: number };
+	views: number;
+	userId: string;
+	username: string;
+	firstname: string;
+	lastname: string;
+	userImage: string;
+	email: string;
+	phone: string;
+	gender: string;
+}
+
+export interface CommentDef {
+	id: string;
+	body: string;
+	postId: string;
+	likes: string;
+	user: { id: string, username: string, fullName: string, image: string };
 }

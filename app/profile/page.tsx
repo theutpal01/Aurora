@@ -8,6 +8,7 @@ import Button2 from "../ui/buttons/Button2";
 import { FaSave, FaShare } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import Input from "../ui/inputs/Input";
+import Loading from "../ui/controls/Loading";
 
 const Page = () => {
 	const isAuthenticated = useAuth();
@@ -49,8 +50,8 @@ const Page = () => {
 
 	if (!isAuthenticated) return null;
 	return (
-		<div className="bg-background relative h-full w-full">
-			{loading && <div className="text-primary-text bg-background h-full flex flex-col overflow-auto justify-center items-center" >Loading...</div>}
+		<div className="bg-background w-full h-full">
+			{loading && <div className="w-full flex h-full"><Loading /></div>}
 			{error && <div>{error}</div>}
 			{userData && dummyData &&
 				<div className="bg-background flex flex-col overflow-auto justify-center items-center px-4">
@@ -90,7 +91,6 @@ const Page = () => {
 						</form>
 					</div>
 				</div>
-
 			}
 		</div>
 	)

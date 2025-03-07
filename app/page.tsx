@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { useAuth } from "./hooks/useAuth";
 import PostCard from "./ui/cards/PostCard";
 import { PostDef } from "./lib/definations";
+import PostView from "./ui/cards/PostView";
+import Loading from "./ui/controls/Loading";
 
 export default function Home() {
 	const isAuthenticated = useAuth();
+	const [postNumber, setPostNumber] = useState<string | null>(null);
 	const [posts, setPosts] = useState<Array<PostDef>>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
@@ -19,9 +22,21 @@ export default function Home() {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 				});
-				const postsData = await data.json();
-				console.log(postsData.posts);
-				setPosts(postsData.posts);
+				let postsData = await data.json();
+
+				postsData = postsData.posts.map((post: PostDef) => {
+					return {
+						id: post.id,
+						title: post.title,
+						body: post.body,
+						tags: post.tags,
+						userId: post.userId,
+						image: "/posts/" + Math.floor(Math.random() * 5 + 1) + ".png",
+						reactions: post.reactions,
+						views: post.views
+					}
+				});
+				setPosts(postsData);
 			} catch (err) {
 				setError((err as Error).message);
 			} finally {
@@ -35,8 +50,8 @@ export default function Home() {
 	if (!isAuthenticated) return null;
 
 	return (
-		<div className="bg-background relative w-full  flex justify-center items-center">
-			{loading && <div className="flex h-[90%] w-full justify-center items-center"><h2 className="text-primary-text">Loading...</h2></div>}
+		<div className="g-background w-full h-full flex justify-center">
+			{loading && <div className="w-full flex h-full"><Loading /></div>}
 			{error &&
 				<h3 className="text-primary-text">{error}</h3>
 			}
@@ -44,17 +59,11 @@ export default function Home() {
 			{posts &&
 				<div className="grid h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5 mx-4 my-8">
 					{posts.map((post: PostDef) => (
-						<PostCard key={post.id} post={{
-							id: post.id,
-							title: post.title,
-							body: post.body,
-							tags: post.tags,
-							userId: post.userId,
-							image: "/posts/" + Math.floor(Math.random() * 5 + 1) + ".png",
-							reactions: post.reactions,
-							views: post.views
-						}} />
+						<PostCard key={post.id} setPost={setPostNumber} post={post} />
+
 					))}
+					<PostView setPostNumber={setPostNumber} post={posts.filter((post) => post.id === postNumber)[0]} />
+
 				</div>
 			}
 		</div >
