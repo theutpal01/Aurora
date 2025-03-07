@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function GET(req: Request) {
 	try {
-		const { postId }: { postId: number } = await req.json();
+		const { searchParams } = new URL(req.url);
+		const postId = searchParams.get("postId");
 
 		const response = await fetch(`https://dummyjson.com/comments/post/${postId}`);
 		const comments = await response.json();

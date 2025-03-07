@@ -29,10 +29,9 @@ const Page = () => {
 				const user = decodeToken(token);
 				if (!user) throw new Error("Invalid token");
 				console.log("ID:", user.id);
-				const res = await fetch("/api/profile", {
-					method: "POST",
+				const res = await fetch(`/api/profile?userId=${user.id}`, {
+					method: "GET",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ userId: user.id })
 				});
 
 				const data = await res.json();

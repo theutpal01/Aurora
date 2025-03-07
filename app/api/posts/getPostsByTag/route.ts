@@ -4,10 +4,10 @@ export async function GET(req: Request) {
 	try {
 		const { postId }: { postId: number } = await req.json();
 
-		const response = await fetch(`https://dummyjson.com/posts/${postId}`);
-		const post = await response.json();
+		const response = await fetch(`https://dummyjson.com/posts/tag-list`);
+		const tags = await response.json();
 
-		const responseNext = NextResponse.json({ success: true, post });
+		const responseNext = NextResponse.json({ success: true, tags });
 		return responseNext;
 	} catch (error) {
 		return NextResponse.json(

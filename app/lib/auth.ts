@@ -34,7 +34,6 @@ export const getToken = () => {
 		.split("; ")
 		.find(row => row.startsWith("token="))
 		?.split("=")[1];
-	console.log("Token:", token);
 	return token;
 };
 

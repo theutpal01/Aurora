@@ -7,7 +7,7 @@ import React from "react";
 
 const PostCard = ({ post, setPost }: { post: PostDef, setPost: React.Dispatch<React.SetStateAction<string | null>> }) => {
 	return (
-		<div className="bg-foreground relative shadow-xl rounded-lg max-w-96 w-full h-[28rem] p-5 before:content-[''] before:bg-background before:w-[30%] before:h-4 before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:rounded-b-2xl before:shadow">
+		<div className="bg-foreground relative shadow-xl rounded-lg max-w-[22rem] w-full h-[28rem] p-5 before:content-[''] before:bg-background before:w-[30%] before:h-4 before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:rounded-b-2xl before:shadow">
 			<div className="flex flex-col h-full">
 				<div className="rounded-xl overflow-hidden aspect-video h-full">
 					<Image className="h-full object-cover object-center" src={post.image} alt={post.title} width={1000} height={720} />

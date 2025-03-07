@@ -27,10 +27,9 @@ export default function Home() {
 				console.log("UNIQUID: ", uniqueUserIds);
 				const userProfiles = await Promise.all(
 					uniqueUserIds.map(async (userId) => {
-						const res = await fetch("/api/profile/", {
-							method: "POST",
+						const res = await fetch(`/api/profile?userId=${userId}`, {
+							method: "GET",
 							headers: { "Content-Type": "application/json" },
-							body: JSON.stringify({ userId }),
 						});
 						return res.json();
 					})
@@ -47,7 +46,7 @@ export default function Home() {
 		const fetchPosts = async () => {
 			try {
 				const data = await fetch("/api/posts/getAll", {
-					method: "POST",
+					method: "GET",
 					headers: { "Content-Type": "application/json" },
 				});
 				let postsData = await data.json();
@@ -97,11 +96,8 @@ export default function Home() {
 
 						</div>
 					</PerfectScrollbar>
-					<div className="hidden xl:flex justify-center items-center h-full w-[2px] bg-gray-500/50">
-					</div>
 
-
-					<div className="hidden xl:flex justify-center w-1/4 py-2 h-full overflow-auto">
+					<div className="hidden xl:flex bg-background drop-shadow border-foreground border-l justify-center w-1/4 py-2 h-full overflow-auto">
 						<PerfectScrollbar className="w-full h-full px-3">
 							<UsersView loading={loadingUsers} suggestions={suggestions} />
 						</PerfectScrollbar>

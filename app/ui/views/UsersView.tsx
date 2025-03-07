@@ -8,7 +8,6 @@ const UsersView = ({ loading, suggestions }: { loading: boolean, suggestions: Ar
 			{loading && <div className="flex relative items-center justify-center w-full h-full"><Loading /></div>}
 			{!loading &&
 				<div className='flex flex-col w-full pr-2'>
-
 					<h2 className='text-xl text-primary-text py-3'>Suggested</h2>
 					{suggestions.map((user) => (
 						<div key={user.id} className="flex cursor-pointer w-full items-center justify-between p-3 bg-foreground rounded-lg my-2">

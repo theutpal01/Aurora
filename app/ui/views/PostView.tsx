@@ -21,19 +21,17 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 	useEffect(() => {
 		const fetchComments = async (post: PostDef) => {
 			try {
-				const data = await fetch("/api/posts/getComments", {
-					method: "POST",
+				const data = await fetch(`/api/posts/getComments?postId=${post.id}`, {
+					method: "GET",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ postId: post.id })
 				});
 				let commentsData = await data.json();
 
 				const updatedComments = await Promise.all(
 					commentsData.comments.map(async (comment: CommentDef) => {
-						const userdata = await fetch("/api/profile/", {
-							method: "POST",
+						const userdata = await fetch(`/api/profile?userId=${comment.user.id}`, {
+							method: "GET",
 							headers: { "Content-Type": "application/json" },
-							body: JSON.stringify({ userId: comment.user.id })
 						});
 
 						const userData = await userdata.json();
@@ -41,13 +39,14 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 						return {
 							...comment,
 							user: {
-								...comment.user, // Keep other user properties
-								image: userData.image, // Update only the image
+								...comment.user,
+								image: userData.image
 							}
 						};
 					})
 				);
 				commentsData.comments = updatedComments;
+				console.log("COMMENTS: ", commentsData);
 				setComments(commentsData.comments);
 			} catch (err) {
 				console.log(err)
@@ -57,12 +56,10 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 		}
 
 		const fetchUser = async (post: PostDef) => {
-			setLoading(true);
 			try {
-				const data = await fetch("/api/profile/", {
-					method: "POST",
+				const data = await fetch(`/api/profile?userId=${post.userId}`, {
+					method: "GET",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ userId: post.userId })
 				});
 				const userData = await data.json();
 				setPostData({
@@ -84,7 +81,7 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 			fetchUser(post);
 		}
 
-	}, [post]);
+	}, [post, postData]);
 
 	return (
 		<div className={`absolute w-screen h-screen left-0 z-50 bg-foreground/10 flex justify-center items-center ${show ? "top-0 opacity-100" : "opacity-0 -top-full"} duration-300 ease-in`}>
@@ -137,38 +134,8 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 									<div className="w-full flex flex-col p-4">
 										{comments.map((comment) => (
 											<CommentCard key={comment.id} comment={comment} />
-										))}{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
 										))}
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
+										{comments.length === 0 && <p className="text-center text-secondary-text">No comments yet</p>}
 									</div>
 								</PerfectScrollbar>
 

@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function GET(req: Request) {
 	try {
-		const { userId }: { userId: number } = await req.json();
+		const { searchParams } = new URL(req.url);
+		const userId = searchParams.get("userId");
 		if (!userId) {
 			return NextResponse.json({ error: "User ID is required" }, { status: 400 });
 		}
