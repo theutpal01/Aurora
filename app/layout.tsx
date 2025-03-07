@@ -36,7 +36,7 @@ export default function RootLayout({
 				<div className="flex h-full max-h-[89vh] md:max-h-[90vh]">
 					<Sidebar theme="primary" />
 					<div className="w-full overflow-auto mb-18 md:mb-0">
-						{children}
+							{children}
 					</div>
 				</div>
 			</body>

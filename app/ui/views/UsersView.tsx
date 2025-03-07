@@ -1,6 +1,5 @@
 import { UserDef } from '@/app/lib/definations'
 import React from 'react'
-import Button2 from '../buttons/Button2'
 import Loading from '../controls/Loading'
 
 const UsersView = ({ loading, suggestions }: { loading: boolean, suggestions: Array<UserDef> }) => {
@@ -12,7 +11,7 @@ const UsersView = ({ loading, suggestions }: { loading: boolean, suggestions: Ar
 
 					<h2 className='text-xl text-primary-text py-3'>Suggested</h2>
 					{suggestions.map((user) => (
-						<div key={user.id} className="flex w-full items-center justify-between p-3 bg-foreground rounded-lg my-2">
+						<div key={user.id} className="flex cursor-pointer w-full items-center justify-between p-3 bg-foreground rounded-lg my-2">
 							<div className="flex items-center">
 								<img src={user.image} alt="user" className="w-12 h-12 rounded-full" />
 								<div className="ml-4">

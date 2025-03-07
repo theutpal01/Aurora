@@ -7,6 +7,8 @@ import { PostDef, UserDef } from "./lib/definations";
 import Loading from "./ui/controls/Loading";
 import PostView from "./ui/views/PostView";
 import UsersView from "./ui/views/UsersView";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 export default function Home() {
 	const isAuthenticated = useAuth();
@@ -84,19 +86,25 @@ export default function Home() {
 			}
 
 			{!loading && posts &&
-				<div className="flex justify-between items-center w-full h-full space-x-2">
-					<div className="grid p-5 grow overflow-auto justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
-						{posts.map((post: PostDef) => (
-							<PostCard key={post.id} setPost={setPostNumber} post={post} />
+				<div className="flex justify-between items-center overflow-auto w-full h-full space-x-2">
+					<PostView setPostNumber={setPostNumber} post={posts.filter((post) => post.id === postNumber)[0]} />
+					<PerfectScrollbar className="w-full h-full px-3 grow">
+						<div className="relative grid p-5 w-full justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
+							{posts.map((post: PostDef) => (
+								<PostCard key={post.id} setPost={setPostNumber} post={post} />
 
-						))}
-						<PostView setPostNumber={setPostNumber} post={posts.filter((post) => post.id === postNumber)[0]} />
+							))}
 
-					</div>
+						</div>
+					</PerfectScrollbar>
 					<div className="hidden xl:flex justify-center items-center h-full w-[2px] bg-gray-500/50">
 					</div>
+
+
 					<div className="hidden xl:flex justify-center w-1/4 py-2 h-full overflow-auto">
-						<UsersView loading={loadingUsers} suggestions={suggestions} />
+						<PerfectScrollbar className="w-full h-full px-3">
+							<UsersView loading={loadingUsers} suggestions={suggestions} />
+						</PerfectScrollbar>
 					</div>
 				</div>
 			}
