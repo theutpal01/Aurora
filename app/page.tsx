@@ -78,7 +78,7 @@ export default function Home() {
 	if (!isAuthenticated) return null;
 
 	return (
-		<div className="g-background w-full h-full flex justify-center">
+		<div className="bg-background w-full h-full flex justify-center">
 			{loading && <div className="w-full flex h-full"><Loading /></div>}
 			{error &&
 				<h3 className="text-primary-text">{error}</h3>
@@ -87,8 +87,8 @@ export default function Home() {
 			{!loading && posts &&
 				<div className="flex justify-between items-center overflow-auto w-full h-full space-x-2">
 					<PostView setPostNumber={setPostNumber} post={posts.filter((post) => post.id === postNumber)[0]} />
-					<PerfectScrollbar className="w-full h-full px-3 grow">
-						<div className="relative grid p-5 w-full justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
+					<PerfectScrollbar className="w-full m-0">
+						<div className="relative overflow-x-hidden grow grid p-5 w-full justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
 							{posts.map((post: PostDef) => (
 								<PostCard key={post.id} setPost={setPostNumber} post={post} />
 
@@ -96,10 +96,11 @@ export default function Home() {
 
 						</div>
 					</PerfectScrollbar>
-
-					<div className="hidden xl:flex bg-background drop-shadow border-foreground border-l justify-center w-1/4 py-2 h-full overflow-auto">
-						<PerfectScrollbar className="w-full h-full px-3">
-							<UsersView loading={loadingUsers} suggestions={suggestions} />
+					<div className="flex w-1/3 border-l border-foreground bg-background drop-shadow h-full">
+						<PerfectScrollbar className="w-full">
+							<div className="hidden xl:flex px-3 justify-center w-full h-full overflow-x-hidden">
+								<UsersView loading={loadingUsers} suggestions={suggestions} />
+							</div>
 						</PerfectScrollbar>
 					</div>
 				</div>

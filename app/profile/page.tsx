@@ -56,7 +56,7 @@ const Page = () => {
 			{error && <div>{error}</div>}
 			{userData && dummyData &&
 				<PerfectScrollbar>
-					<div className="bg-background flex flex-col overflow-auto justify-center items-center px-4">
+					<div className="bg-background flex flex-col overflow-x-hidden justify-center items-center px-4">
 						<div className="flex flex-col w-full py-4">
 							<div className="flex w-full items-center space-x-4">
 								<div className="w-3/12  flex justify-center items-center py-3">

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation'
 import { PostDef } from '@/app/lib/definations'
 import React, { useState } from 'react'
 import PostCard from '../cards/PostCard'
@@ -6,7 +7,7 @@ import Button2 from '../buttons/Button2'
 
 const ExploreView = ({ data }: { data: { tag: string, posts: Array<PostDef> } }) => {
 	const [postNumber, setPostNumber] = useState<string | null>(null);
-
+	const router = useRouter()
 	return (
 		<div className='flex flex-col text-primary-text space-y-3'>
 			<div className='flex justify-between items-center'>
@@ -19,7 +20,7 @@ const ExploreView = ({ data }: { data: { tag: string, posts: Array<PostDef> } })
 				))}
 			</div>
 			<div className='flex justify-end'>
-				<Button2 text={`Explore ${data.tag[0].toUpperCase() + data.tag.slice(1)}`} type='button' theme='usecondary' size='sm' />
+				<Button2 text={`Explore ${data.tag[0].toUpperCase() + data.tag.slice(1)}`} type='button' theme='usecondary' size='sm' clickFn={() => router.push(`/search?query=${data.tag}`)}/>
 			</div>
 		</div>
 	)
