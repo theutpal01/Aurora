@@ -70,7 +70,6 @@ export default function Home() {
 				setLoading(false);
 			}
 		}
-		// if (!isAuthenticated) return;
 		fetchPosts();
 	}, []);
 

@@ -4,7 +4,8 @@ import { InputDef } from "@/app/lib/definations"
 const Input = ({ text, className, name, placeholder="Enter text", theme = "primary", type="text", size="md", icon, handleChange }: InputDef) => {
 	const themes = {
 		primary: "focus:border-primary/50 hover:border-primary/50 focus:shadow-primary/10 hover:shadow-primary/10",
-		secondary: "focus:border-secondary/50 hover:border-secondary/50 focus:shadow-secondary/10 hover:shadow-secondary/10"
+		secondary: "focus:border-secondary/50 hover:border-secondary/50 focus:shadow-secondary/10 hover:shadow-secondary/10",
+		accent: "focus:border-accent/50 hover:border-accent/50 focus:shadow-accent/10 hover:shadow-accent/10"
 	}
 
 	const sizes = {

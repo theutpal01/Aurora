@@ -65,16 +65,17 @@ const Page = () => {
 	}
 
 	return (
-		<div className="bg-background absolute h-screen w-screen md:bg-white md:flex md:justify-center md:items-center">
+		<div className="bg-background absolute h-screen w-screen md:bg-foreground md:flex md:justify-center md:items-center">
 			<ToastContainer theme="colored" draggable position="bottom-right" />
-			<div className="w-full relative md:bg-accent/40 md:rounded-2xl md:shadow-lg md:max-w-4/5 xl:max-w-3/5 flex h-full flex-col md:flex-row justify-start md:justify-center items-center md:max-h-2/3 md:before:content-[''] md:before:absolute md:before:-translate-x-1/2 md:before:bg-accent/30 md:before:w-4 md:before:h-full md:before:rounded-l-[100%]">
+			<div className="w-full relative md:bg-accent/40 md:rounded-2xl overflow-hidden md:shadow-lg md:max-w-4/5 xl:max-w-3/5 flex h-full flex-col md:flex-row justify-start md:justify-center items-center md:max-h-2/3 md:before:content-[''] md:before:absolute md:before:-translate-x-1/2 md:before:bg-accent/30 md:before:w-4 md:before:h-full md:before:rounded-l-[100%]">
 				<div className="flex md:w-1/2 bg-background h-1/2 md:h-full flex-col items-center justify-center space-y-4">
 					<Image className="size-40 md:size-44 lg:size-56" src="logo.svg" alt="Aurora Logo" width={100} height={100} />
-					<h1 className="text-4xl uppercase font-title">Aurora</h1>
+					<h1 className="text-4xl uppercase font-title text-primary-text">Aurora</h1>
 				</div>
 				<div className="flex bg-accent/40 md:bg-transparent relative md:w-1/2 px-4 lg:px-8 justify-center items-center ms:h-full grow flex-col w-full before:content-[''] before:h-6 before:w-full before:bg-accent/30 md:before:bg-transparent before:absolute before:top-0 before:rounded-t-[100%] before:-translate-y-full">
 					<form onSubmit={handleLogin} className="space-y-5 w-full sm:w-3/4">
 						<Input
+							theme="accent"
 							name="email"
 							type="email"
 							placeholder="Email"
@@ -82,6 +83,7 @@ const Page = () => {
 							handleChange={handleChange}
 						/>
 						<Input
+							theme="accent"
 							name="password"
 							type="password"
 							placeholder="Password"

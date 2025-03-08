@@ -2,7 +2,7 @@ export interface ButtonDef {
 	text: string;
 	type: "button" | "submit" | "reset";
 	className?: string;
-	theme?: "primary" | "secondary";
+	theme?: "primary" | "secondary" | "accent";
 	size?: "sm" | "md" | "lg" | "xl";
 	icon?: React.ReactNode | undefined;
 	rounded?: boolean;
@@ -32,7 +32,7 @@ export interface ReactionBtnDef {
 export interface InputDef {
 	text: string;
 	className?: string;
-	theme?: "primary" | "secondary";
+	theme?: "primary" | "secondary" | "accent";
 	type: "text" | "password" | "email" | "number";
 	placeholder: string;
 	name: string;

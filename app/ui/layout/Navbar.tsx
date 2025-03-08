@@ -5,15 +5,16 @@ import React from 'react'
 import { GoHomeFill, GoPersonFill, GoTelescopeFill } from "react-icons/go";
 import { RiSearchFill } from "react-icons/ri";
 
-const Navbar = ({ theme }: { theme: "primary" | "secondary" }) => {
+const Navbar = ({ theme }: { theme: "primary" | "secondary" | "accent" }) => {
 	const pathname = usePathname();
 
 	const themes = {
 		primary: "*:bg-primary *:text-primary-text",
-		secondary: "*:bg-secondary *:text-primary-text"
+		secondary: "*:bg-secondary *:text-primary-text",
+		accent: "*:bg-accent *:text-accent-text"
 	}
 
-	const active = `!h-10/12 relative before:content-[''] before:absolute before:top-0 before:-translate-y-1/2 ${["/explore", "/profile"].includes(pathname) ? (pathname == "/explore" ? "before:rounded-r-2xl" : "before:rounded-l-2xl") : "before:rounded-2xl"} before:left-0 before:h-5 before:bg-background before:z-50 before:w-full before:duration-0 before:transition-none after:content-[''] after:absolute after:-top-1 after:left-1/2 after:-translate-1/2 after:rounded-2xl after:left-0 after:h-3 after:bg-primary after:z-50 after:w-7/12 hover:after:w-11/12 after:duration-200 after:transition-all`
+	const active = `!h-10/12 relative before:content-[''] before:absolute before:top-0 before:-translate-y-1/2 ${["/explore", "/profile"].includes(pathname) ? (pathname == "/explore" ? "before:rounded-r-2xl" : "before:rounded-l-2xl") : "before:rounded-2xl"} before:left-0 before:h-5 before:bg-background before:z-50 before:w-full before:duration-0 before:transition-none after:content-[''] after:absolute after:-top-1 after:left-1/2 after:-translate-1/2 after:rounded-2xl after:left-0 after:h-3 ${theme === "primary" ? "after:bg-primary" :  (theme === "secondary" ? "after:bg-secondary" : "after:bg-accent")} after:z-50 after:w-7/12 hover:after:w-11/12 after:duration-200 after:transition-all`
 
 	return (
 		<>

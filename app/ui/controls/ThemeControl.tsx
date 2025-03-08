@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const ThemeControl = () => {
-	const [light, setLight] = useState(true);
+	const [light, setLight] = useState(false);
 
 	const toggleTheme = () => {
 		if (light === true) {

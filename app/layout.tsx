@@ -17,9 +17,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="relative overflow-hidden light bg-background">
+			<body className="relative overflow-hidden dark bg-background">
 				<Header />
-				<Navbar theme="primary" />
+				<Navbar theme="accent" />
 				<div className="flex h-full max-h-[89vh] md:max-h-[90vh]">
 					<Sidebar theme="accent" />
 					<div className="w-full font-body antialiased overflow-auto mb-18 md:mb-0">
