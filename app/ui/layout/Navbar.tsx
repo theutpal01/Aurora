@@ -18,17 +18,17 @@ const Navbar = ({ theme }: { theme: "primary" | "secondary" }) => {
 	return (
 		<>
 			{!pathname.includes("/login") && <nav className={`fixed font-heading bottom-0 left-0 w-full z-50 ${themes[theme]} h-20 flex md:hidden *:flex overflow-hidden justify-around  bg-background items-end *:h-full *:justify-center *:items-center *:w-full *:duration-400`}>
-				<Link className={`${pathname === "/explore" ? active : ""} ${pathname === "/search" ? "rounded-tr-2xl" : ''}`} href="/explore">
-					<GoTelescopeFill className={`font-heading ${pathname === "/explore" ? "text-white" : "text-gray-100"} size-6`} />
+				<Link className={`group ${pathname === "/explore" ? active : ""} ${pathname === "/search" ? "rounded-tr-2xl" : ''}`} href="/explore">
+					<GoTelescopeFill className={`group-active:scale-90 font-heading ${pathname === "/explore" ? "text-white" : "text-gray-100"} size-6`} />
 				</Link>
-				<Link className={`${pathname === "/search" ? active : ""} ${pathname === "/" ? "rounded-tr-2xl" : (pathname === "/explore") ? "rounded-tl-2xl" : ""}`} href="/search">
-					<RiSearchFill className={`${pathname === "/search" ? "text-white" : "text-gray-100"} size-6`} />
+				<Link className={`group ${pathname === "/search" ? active : ""} ${pathname === "/" ? "rounded-tr-2xl" : (pathname === "/explore") ? "rounded-tl-2xl" : ""}`} href="/search">
+					<RiSearchFill className={`group-active:scale-90 ${pathname === "/search" ? "text-white" : "text-gray-100"} size-6`} />
 				</Link>
-				<Link className={`${pathname === "/" ? active : ""} ${pathname === "/profile" ? "rounded-tr-2xl" : (pathname === "/search") ? "rounded-tl-2xl" : ""}`} href="/">
-					<GoHomeFill className={`${pathname === "/" ? "text-white" : "text-gray-100"} size-6`} />
+				<Link className={`group ${pathname === "/" ? active : ""} ${pathname === "/profile" ? "rounded-tr-2xl" : (pathname === "/search") ? "rounded-tl-2xl" : ""}`} href="/">
+					<GoHomeFill className={`group-active:scale-90 ${pathname === "/" ? "text-white" : "text-gray-100"} size-6`} />
 				</Link>
-				<Link className={`${pathname === "/profile" ? active : ""} ${pathname === "/" ? "rounded-tl-2xl" : ''}`} href="/profile">
-					<GoPersonFill className={`${pathname === "/profile" ? "text-white" : "text-gray-100"} size-6`} />
+				<Link className={`group ${pathname === "/profile" ? active : ""} ${pathname === "/" ? "rounded-tl-2xl" : ''}`} href="/profile">
+					<GoPersonFill className={`group-active:scale-90 ${pathname === "/profile" ? "text-white" : "text-gray-100"} size-6`} />
 				</Link>
 			</nav>}
 		</>

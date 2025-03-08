@@ -84,7 +84,7 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 	}, [post, postData]);
 
 	return (
-		<div className={`absolute w-screen h-screen left-0 z-50 bg-foreground/10 flex justify-center items-center ${show ? "top-0 opacity-100" : "opacity-0 -top-full"} duration-300 ease-in`}>
+		<div className={`absolute w-screen h-screen left-0 z-50 bg-foreground/10 flex justify-center items-center ${show ? "top-0 opacity-100" : "opacity-0 pointer-events-none -top-full"} duration-300 ease-in`}>
 			<div className="lg:w-[90%] lg:h-[90%] w-full h-full bg-primary-text/10 backdrop-blur-3xl z-[100] relative px-4 pb-4 pt-14 md:rounded-lg">
 				<BiCollapse className="cursor-pointer active:scale-90 hover:scale-110 duration-150 text-primary-text size-8 absolute right-0 top-0 translate-1/2 -translate-x-1/2" onClick={() => { setShow(false); setPostNumber(null); setPostData(null) }} />
 				{loading && <div className="w-full flex h-full"><Loading /></div>}
