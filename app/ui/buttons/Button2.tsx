@@ -18,7 +18,7 @@ const Button2 = ({ text, className, type, theme = "primary", size = "md", clickF
 	}
 
 	return (
-		<button className={`${className} ${themes[theme]} ${sizes[size]} flex items-center font-medium shadow-[0_0.7em_1.5em_-0.5em_rgba(59,48,78,0.527)] tracking-wider cursor-pointer relative rounded-lg border-0 hover:shadow-[0_0.5em_1.5em_-0.5em_rgba(88,71,116,0.627)] active:shadow-[0_0.3em_1em_-0.5em_rgba(88,71,116,0.627)] before:content-[''] before:w-1 before:h-[40%] before:bg-white before:absolute before:rounded-r-[5px] before:left-0 before:z-10 after:content-[''] after:w-1 after:h-[40%] after:bg-white after:absolute after:rounded-l-[5px] after:right-0 after:z-10 hover:before:h-[60%] hover:after:h-[60%] before:duration-200 after:duration-200 active:before:h-[40%] active:after:h-[40%]`} onClick={clickFn} type={type}>
+		<button className={`${className} ${themes[theme]} ${sizes[size]} flex items-center font-medium shadow-[0_0.7em_1.5em_-0.5em_rgba(59,48,78,0.527)] tracking-wider cursor-pointer relative rounded-lg border-0 hover:shadow-[0_0.5em_1.5em_-0.5em_rgba(88,71,116,0.627)] active:shadow-[0_0.3em_1em_-0.5em_rgba(88,71,116,0.627)] before:content-[''] before:w-1 before:h-[40%] md:before:bg-white before:bg-transparent before:absolute before:rounded-r-[5px] before:left-0 before:z-10 after:content-[''] after:w-1 after:h-[40%] md:after:bg-white after:bg-transparent after:absolute after:rounded-l-[5px] after:right-0 after:z-10 hover:before:h-[60%] hover:after:h-[60%] before:duration-200 after:duration-200 active:before:h-[40%] active:after:h-[40%]`} onClick={clickFn} type={type}>
 			<div className="flex space-x-4 justify-around items-center">
 				{icon}
 				{text !== "" && <p>{text}</p>}

@@ -101,12 +101,14 @@ const SearchResults: React.FC<SearchResultsProps> = ({ setPostNumber }) => {
 				</PerfectScrollbar>
 			)}
 			{!loading && queryRes !== "" && posts.length === 0 && (
-				<div className="flex w-full flex-col">
-					<h2 className="p-7 w-full text-xl text-primary-text font-normal">
-						{`Search results for: `} <strong className="font-semibold">{queryRes}</strong>
-					</h2>
-					<p className="text-secondary-text text-center">No results found</p>
-				</div>
+				<>
+					<div className="flex w-full flex-col">
+						<h2 className="p-7 w-full text-xl text-primary-text font-normal">
+							{`Search results for: `} <strong className="font-semibold">{queryRes}</strong>
+						</h2>
+						<p className="text-secondary-text text-center">No results found</p>
+					</div>
+				</>
 			)}
 			<PostView post={posts.find((post) => post.id === queryRes) ?? null} setPostNumber={setPostNumber} />
 		</div>
