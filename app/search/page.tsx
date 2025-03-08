@@ -9,6 +9,7 @@ import PostCard from "../ui/cards/PostCard";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PostView from "../ui/views/PostView";
+import { isMobile } from "react-device-detect";
 
 // Define props for the search results component
 interface SearchResultsProps {
@@ -52,7 +53,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ setPostNumber }) => {
 		if (searchQuery.trim() === "") {
 			return
 		}
-		
+
 		setQuery(searchQuery);
 		router.push(`?query=${encodeURIComponent(searchQuery)}`);
 		fetchSearchResults(searchQuery);
@@ -71,8 +72,22 @@ const SearchResults: React.FC<SearchResultsProps> = ({ setPostNumber }) => {
 			</div>
 			{loading && <div className="w-full flex h-full"><Loading /></div>}
 			{error && <h3 className="text-primary-text">{error}</h3>}
-			{!loading && posts.length > 0 && (
-				<PerfectScrollbar className="flex flex-col w-full h-full">
+			{!loading && posts.length > 0 && (isMobile ?
+				<div className="flex flex-col w-full h-full">
+					{queryRes !== "" && (
+						<h2 className="px-7 py-2 w-full text-xl text-primary-text font-normal">
+							{`Search results for: `} <strong className="font-semibold">{queryRes}</strong>
+						</h2>
+					)}
+					<div className="relative grid p-3 w-full overflow-x-hidden justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-center gap-5">
+						{posts.map((post: PostDef) => (
+							<PostCard key={post.id} setPost={setPostNumber} post={post} />
+						))}
+					</div>
+				</div>
+
+				:
+				<PerfectScrollbar options={{ suppressScrollX: true, suppressScrollY: false }} className="flex flex-col w-full h-full">
 					{queryRes !== "" && (
 						<h2 className="px-7 py-2 w-full text-xl text-primary-text font-normal">
 							{`Search results for: `} <strong className="font-semibold">{queryRes}</strong>

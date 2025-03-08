@@ -6,7 +6,6 @@ const ReactionBtn = ({ name, initialLikes }: { name: string, initialLikes: numbe
 	const [likes, setLikes] = useState(initialLikes);
 	const [reaction, setReaction] = useState<"like" | "dislike" | null>(null);
 	const handleReaction = (type: "dislike" | "like") => {
-		console.log(reaction, type);
 		if (reaction === type) {
 			setReaction(null);
 			(type === "like") ? setLikes(likes - 1) : setLikes(likes + 1);

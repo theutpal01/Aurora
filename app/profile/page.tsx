@@ -13,6 +13,9 @@ import Loading from "../ui/controls/Loading";
 import { useRouter } from "next/navigation";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import { isMobile } from "react-device-detect";
+
+
 
 const Page = () => {
 	const router = useRouter();
@@ -23,42 +26,10 @@ const Page = () => {
 	const [error, setError] = useState<string>("");
 	const [edit, setEdit] = useState<boolean>(false);
 
-	useEffect(() => {
-		const fetchProfile = async () => {
-			const token = getToken();
-			if (!token) throw new Error("No token found");
-
-			try {
-				const user = decodeToken(token);
-				if (!user) throw new Error("Invalid token");
-				console.log("ID:", user.id);
-				const res = await fetch(`/api/profile?userId=${user.id}`, {
-					method: "GET",
-					headers: { "Content-Type": "application/json" },
-				});
-
-				const data = await res.json();
-				if (!res.ok) throw new Error(data.error);
-
-				setUserData(data);
-				setDummyData(data);
-			} catch (err) {
-				setError((err as Error).message);
-			} finally {
-				setLoading(false);
-			}
-		};
-
-		fetchProfile();
-	}, []);
-
-	if (!isAuthenticated) return null;
-	return (
-		<div className="bg-background w-full h-full">
-			{loading && <div className="w-full flex h-full"><Loading /></div>}
-			{error && <div>{error}</div>}
-			{userData && dummyData &&
-				<PerfectScrollbar>
+	const PageView = () => {
+		return (
+			<>
+				{userData && dummyData && !loading &&
 					<div className="bg-background flex flex-col overflow-x-hidden justify-center items-center px-4">
 						<div className="flex flex-col w-full py-4">
 							<div className="flex w-full items-center space-x-4">
@@ -93,13 +64,58 @@ const Page = () => {
 								<Input text={dummyData.phone} type="text" placeholder="Phone" name="phone" handleChange={(e) => setDummyData({ ...dummyData, phone: e.target.value })} />
 								<Input text={dummyData.gender} type="text" placeholder="Gender" name="gender" handleChange={(e) => setDummyData({ ...dummyData, gender: e.target.value })} />
 								<div className="flex space-x-4">
-									<Button2 text="Save" type="submit" theme="secondary" size="sm" clickFn={(e) => { e.preventDefault(); console.log(dummyData) }} icon={<FaSave />} />
+									<Button2 text="Save" type="submit" theme="secondary" size="sm" clickFn={(e) => { e.preventDefault(); }} icon={<FaSave />} />
 									<Button2 text="Logout" type="button" theme="primary" icon={<LuLogOut />} size="sm" clickFn={() => { logout(); router.push("/login"); }} />
 								</div>
 							</form>
 						</div>
+					</div>}
+			</>
+		)
+	}
+
+	useEffect(() => {
+		const fetchProfile = async () => {
+			const token = getToken();
+			if (!token) throw new Error("No token found");
+
+			try {
+				const user = decodeToken(token);
+				if (!user) throw new Error("Invalid token");
+				const res = await fetch(`/api/profile?userId=${user.id}`, {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+				});
+
+				const data = await res.json();
+				if (!res.ok) throw new Error(data.error);
+
+				setUserData(data);
+				setDummyData(data);
+			} catch (err) {
+				setError((err as Error).message);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchProfile();
+	}, []);
+
+	if (!isAuthenticated) return null;
+	return (
+		<div className="bg-background w-full h-full">
+			{loading && <div className="w-full flex h-full"><Loading /></div>}
+			{error && <div>{error}</div>}
+			{userData && dummyData && !loading &&
+				(isMobile ?
+					<div>
+						<PageView />
 					</div>
-				</PerfectScrollbar>
+					:
+					<PerfectScrollbar>
+						<PageView />
+					</PerfectScrollbar>)
 			}
 		</div>
 	)

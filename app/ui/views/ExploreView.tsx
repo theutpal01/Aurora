@@ -9,7 +9,7 @@ const ExploreView = ({ data }: { data: { tag: string, posts: Array<PostDef> } })
 	const [postNumber, setPostNumber] = useState<string | null>(null);
 	const router = useRouter()
 	return (
-		<div className='flex flex-col text-primary-text space-y-3'>
+		<div className='text-primary-text py-3 w-full flex flex-col items-center sm:items-stretch space-y-3'>
 			<div className='flex justify-between items-center'>
 				<h2 className='text-2xl font-heading'>{`More on ${data.tag[0].toUpperCase() + data.tag.slice(1)}`}</h2>
 			</div>

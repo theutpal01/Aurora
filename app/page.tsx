@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 import { useAuth } from "./hooks/useAuth";
 import PostCard from "./ui/cards/PostCard";
 import { PostDef, UserDef } from "./lib/definations";
@@ -24,7 +25,6 @@ export default function Home() {
 		const fetchSuggestedUsers = async (posts: Array<PostDef>) => {
 			try {
 				const uniqueUserIds = [...(new Set(posts.map((post) => post.userId)))];
-				console.log("UNIQUID: ", uniqueUserIds);
 				const userProfiles = await Promise.all(
 					uniqueUserIds.map(async (userId) => {
 						const res = await fetch(`/api/profile?userId=${userId}`, {
@@ -34,7 +34,6 @@ export default function Home() {
 						return res.json();
 					})
 				);
-				console.log(userProfiles);
 				setSuggestions(userProfiles);
 			} catch (err) {
 				setError((err as Error).message);
@@ -71,7 +70,7 @@ export default function Home() {
 				setLoading(false);
 			}
 		}
-
+		// if (!isAuthenticated) return;
 		fetchPosts();
 	}, []);
 
@@ -85,19 +84,35 @@ export default function Home() {
 			}
 
 			{!loading && posts &&
-				<div className="flex justify-between items-center overflow-auto w-full h-full space-x-2">
+				<div className="flex justify-between items-center w-full h-full space-x-2">
 					<PostView setPostNumber={setPostNumber} post={posts.filter((post) => post.id === postNumber)[0]} />
-					<PerfectScrollbar className="w-full m-0">
-						<div className="relative overflow-x-hidden grow grid p-5 w-full justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
-							{posts.map((post: PostDef) => (
-								<PostCard key={post.id} setPost={setPostNumber} post={post} />
 
-							))}
+					{isMobile ?
 
+						<div className="w-full m-0 h-full overflow-auto">
+							<div className="relative overflow-x-hidden grow grid p-5 w-full justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
+								{posts.map((post: PostDef) => (
+									<PostCard key={post.id} setPost={setPostNumber} post={post} />
+
+								))}
+
+							</div>
 						</div>
-					</PerfectScrollbar>
+
+						:
+
+						<PerfectScrollbar options={{ suppressScrollX: true, suppressScrollY: false }} className="w-full m-0 h-full overflow-auto">
+							<div className="relative overflow-x-hidden grow grid p-5 w-full justify-items-center place-content-baseline h-full grid-cols-1 lg:grid-cols-2 justify-center gap-5">
+								{posts.map((post: PostDef) => (
+									<PostCard key={post.id} setPost={setPostNumber} post={post} />
+
+								))}
+
+							</div>
+						</PerfectScrollbar>
+					}
 					<div className="hidden xl:flex w-1/3 border-l border-foreground bg-background drop-shadow h-full">
-						<PerfectScrollbar className="w-full">
+						<PerfectScrollbar options={{ suppressScrollX: true, suppressScrollY: false }} className="w-full overflow-auto h-full">
 							<div className="px-3 justify-center w-full h-full overflow-x-hidden">
 								<UsersView loading={loadingUsers} suggestions={suggestions} />
 							</div>

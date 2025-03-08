@@ -29,11 +29,7 @@ export async function POST(req: Request) {
 
 	responseNext.headers.append(
 		"Set-Cookie",
-		`token=${token}; HttpOnly; Secure; SameSite=Strict; Max-Age=3600; Path=/`
-	);
-	responseNext.headers.append(
-		"Set-Cookie",
-		`token=${token}; Secure; SameSite=Strict; Max-Age=3600; Path=/`
+		`token=${token}; SameSite=Strict; Max-Age=3600; Path=/`
 	);
 
 

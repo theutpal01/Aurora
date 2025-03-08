@@ -54,10 +54,8 @@ const Page = () => {
 					const postList = await fetchPost(tag);
 					return { tag, posts: postList };
 				}));
-				console.log(postsArray);
 				postsArray.sort((a, b) => b.posts.length - a.posts.length);
 				setDisplayPosts(postsArray);
-				console.log(postsArray);
 
 			} catch (err) {
 				setError((err as Error).message);
@@ -79,7 +77,7 @@ const Page = () => {
 				<h3 className="text-primary-text">{error}</h3>
 			}
 			{!loading &&
-				<div className="space-y-12">
+				<div className="space-y-12 h-full flex flex-col items-center w-fit">
 					{displayPosts?.slice(0, 10).map((data) => (
 						<ExploreView key={data.tag} data={data} />
 					))}

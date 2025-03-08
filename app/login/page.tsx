@@ -19,7 +19,6 @@ const Page = () => {
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setData({ ...data, [e.target.name]: e.target.value })
-		console.log(data);
 	}
 
 	const handleLogin = async (e: React.FormEvent) => {
@@ -48,7 +47,11 @@ const Page = () => {
 			const result = await res.json();
 			if (!res.ok) throw new Error(result.error);
 			toast.success("Login successful");
-			router.push("/");
+
+			setTimeout(() => {
+				router.push("/");
+			}, 3000);
+
 		} catch (err: any) {
 			setError(err.message);
 			toast.error(err.message);
@@ -60,9 +63,10 @@ const Page = () => {
 		router.push("/");
 		return null;
 	}
+
 	return (
 		<div className="bg-background absolute h-screen w-screen md:bg-white md:flex md:justify-center md:items-center">
-			<ToastContainer theme="colored" draggable position="bottom-right"  />
+			<ToastContainer theme="colored" draggable position="bottom-right" />
 			<div className="w-full relative md:bg-accent/40 md:rounded-2xl md:shadow-lg md:max-w-4/5 xl:max-w-3/5 flex h-full flex-col md:flex-row justify-start md:justify-center items-center md:max-h-2/3 md:before:content-[''] md:before:absolute md:before:-translate-x-1/2 md:before:bg-accent/30 md:before:w-4 md:before:h-full md:before:rounded-l-[100%]">
 				<div className="flex md:w-1/2 bg-background h-1/2 md:h-full flex-col items-center justify-center space-y-4">
 					<Image className="size-40 md:size-44 lg:size-56" src="logo.svg" alt="Aurora Logo" width={100} height={100} />

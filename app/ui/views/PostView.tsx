@@ -10,6 +10,7 @@ import Tag from "../cards/Tag";
 import CommentCard from "../cards/CommentCard";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import { isMobile } from "react-device-detect";
 
 const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React.SetStateAction<string | null>>, post: PostDef | null }) => {
 	const [show, setShow] = useState<boolean>(false);
@@ -48,7 +49,7 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 				commentsData.comments = updatedComments;
 				setComments(commentsData.comments);
 			} catch (err) {
-				console.log(err)
+				console.log(err);
 			} finally {
 				setLoading(false);
 			}
@@ -90,7 +91,7 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 				{!loading && postData && comments &&
 					<PerfectScrollbar className="w-full h-full px-5 py-1">
 						<div className="flex md:space-x-4 space-y-4 md:space-y-0 flex-col md:flex-row h-full">
-							<div className="md:w-5/12 lg:w-4/12 flex flex-col">
+							<div className="md:w-5/12 flex flex-col">
 
 								<div className="rounded overflow-hidden min-h-2/5">
 									<Image className="object-cover max-h-96 h-full object-center aspect-video" src={postData.image} alt={postData.title} width={1000} height={720} />
@@ -127,16 +128,29 @@ const PostView = ({ setPostNumber, post }: { setPostNumber: React.Dispatch<React
 							<div className="md:w-[2px] w-full flex items-center">
 								<div className="w-full h-[2px] md:h-full bg-foreground/50"></div>
 							</div>
-							<div className="flex flex-col justify-between space-y-2 grow">
-								<PerfectScrollbar className="overflow-auto">
-									<h2 className="text-primary-text pb-5 text-2xl font-heading">Comments</h2>
-									<div className="w-full flex flex-col p-4">
-										{comments.map((comment) => (
-											<CommentCard key={comment.id} comment={comment} />
-										))}
-										{comments.length === 0 && <p className="text-center text-secondary-text">No comments yet</p>}
+							<div className="flex flex-col justify-between space-y-2 w-full">
+								{isMobile ?
+									<div className="overflow-auto">
+										<h2 className="text-primary-text pb-5 text-2xl font-heading">Comments</h2>
+										<div className="w-full flex flex-col p-4">
+											{comments.map((comment) => (
+												<CommentCard key={comment.id} comment={comment} />
+											))}
+											{comments.length === 0 && <p className="text-center text-secondary-text">No comments yet</p>}
+										</div>
 									</div>
-								</PerfectScrollbar>
+									
+									:
+
+									<PerfectScrollbar className="overflow-auto">
+										<h2 className="text-primary-text pb-5 text-2xl font-heading">Comments</h2>
+										<div className="w-full flex flex-col p-4">
+											{comments.map((comment) => (
+												<CommentCard key={comment.id} comment={comment} />
+											))}
+											{comments.length === 0 && <p className="text-center text-secondary-text">No comments yet</p>}
+										</div>
+									</PerfectScrollbar>}
 
 								<div className="flex w-full gap-2 items-center">
 									<div className="grow">
